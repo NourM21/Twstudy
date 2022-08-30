@@ -635,6 +635,9 @@ textarea.form-control {
 .footer-bottom p:nth-child(1) {
     margin-top: 25px;
 }
+.footer-bottom p i {
+    background-color: var(--main-color);
+}
 
 /*--------------- Banner Section ---------------*/
 
