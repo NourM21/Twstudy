@@ -1,0 +1,143 @@
+html::before,
+html::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    z-index: -2;
+}
+html::before {
+    top: 20%;
+    left: calc(50% - 650px);
+    width: 100px;
+    height: 100px;
+    background-image: linear-gradient(to right bottom, var(--decoration-bg-color-1), var(--WHITE));
+}
+html::after {
+    bottom: 20%;
+    right: calc(50% - 675px);
+    width: 150px;
+    height: 150px;
+    background-image: linear-gradient(to left bottom, var(--decoration-bg-color-2), var(--WHITE));
+}
+body {
+    --white: hsla(0, 0%, 100%, 0.25);
+    --border-color-1: hsla(0, 0%, 0%, 0.1);
+    --border-color-2: hsla(0, 0%, 100%, 0.40);
+    --shadow: none;
+    --backdrop-filter-blur: blur(5px);
+    background-image: linear-gradient(to right, var(--body-gradient-bg-color-1), var(--body-gradient-bg-color-2));
+    background-attachment: fixed;
+    padding: 40px 0px;
+}
+/*------------ Control Lightness Using Opacity ----------*/
+body::before {
+    content: "";
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--WHITE);
+    opacity: 0.3;
+    z-index: -3;
+}
+.main-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: auto;
+    border: 1px solid var(--border-color-2);
+    border-radius: 20px;
+    background-color: var(--white);
+}
+.main-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    -webkit-backdrop-filter: var(--backdrop-filter-blur);
+    backdrop-filter: var(--backdrop-filter-blur);
+    z-index: -1;
+}
+.header .sub-menu,
+.box {
+    border: 1px solid var(--border-color-2);
+}
+.page-loader,
+.header-backdrop,
+.header .sub-menu,
+.box,
+.modal,
+.style-switcher {
+    -webkit-backdrop-filter: var(--backdrop-filter-blur);
+    backdrop-filter: var(--backdrop-filter-blur);
+}
+.modal-backdrop {
+    background-color: var(--white);
+}
+.header-backdrop.active {
+    opacity: 1;
+}
+
+/*------------ Glass Dark ----------*/
+
+body.t-dark {
+    --border-color-1: hsla(0, 0%, 100%, 0.15);
+    --border-color-2: hsla(0, 0%, 100%, 0.07);
+    --white: hsla(0, 0%, 100%, 0.05);
+    --shadow: none;
+}
+/*------------ Control Darkness Using Opacity ----------*/
+body.t-dark::before {
+    content: "";
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--BLACK);
+    opacity: 0.2;
+    z-index: -1;
+}
+
+/*--------------- Responsive ---------------*/
+
+@media (max-width: 1199px) {
+    body {
+        padding: 40px 30px;
+    }
+    html::before {
+        top: 10%;
+        left: -35px;
+    }
+    html::after {
+        bottom: 10%;
+        right: -60px;
+    }
+}
+
+@media (max-width: 991px) {
+    .header-menu {
+        -webkit-backdrop-filter: var(--backdrop-filter-blur);
+        backdrop-filter: var(--backdrop-filter-blur);
+    }
+    .header .sub-menu {
+        border: 0px;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        padding: 35px 15px;
+    }
+    html::before {
+        left: -50px;
+    }
+    html::after {
+        right: -75px;
+    }
+}
